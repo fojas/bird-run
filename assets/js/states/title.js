@@ -12,7 +12,10 @@ states.title = {
     titleTween.to({
       angle: -gameTitle.angle
     },500+Math.random()*500,Phaser.Easing.Linear.None,true,0,1000,true);
+    this.addControls();
 
+  }, 
+  addControls : function(){
     var keyControl = false
 
     this.startText = this.game.add.text(480, 550, "", { font: "30px Arial", fill: "#ffffff" }),
@@ -22,7 +25,7 @@ states.title = {
       }, this); 
 
     controllerSetup.init(this.game, this.drawStartText.bind(this), this.checkStart.bind(this));
-  }, 
+  },
   drawStartText : function(){
     if(global.cursors.length >= 2) {
       this.startText.text = "Press Start or Space to Start";

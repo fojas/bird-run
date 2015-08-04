@@ -8,21 +8,12 @@ states.gameover= _.extend({}, states.title, {
     game.load.image('woodpecker', 'assets/images/woodpecker.png');
   },
   create: function(){
+    var sprite = game.add.sprite(580,250, global.winner);
+    sprite.anchor.set(0.5);
+    sprite.scale.setTo(3, 3)
     this.game.add.text(480, 450, global.winner.toUpperCase() + " WINS!", { font: "60px Arial", fill: "#ffffff" })
-    states.title.create.call(this);
+    this.addControls(this);
   }, 
-  drawStartText : function(){
-    if(global.cursors.length >= 2) {
-      this.startText.text = "Press Start or Space to Start";
-    } else {
-      this.startText.text = "";
-    }
-  },
-  checkStart : function(){
-    if(global.cursors.length >= 2) {
-      game.state.start('main');
-    }
-  },
   render : $.noop,update: $.noop
 })
 }(Phaser, jQuery, _,
